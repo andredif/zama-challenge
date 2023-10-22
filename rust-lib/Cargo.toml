@@ -1,0 +1,25 @@
+[package]
+name = "rust_merkle"
+version = "0.1.0"
+authors = ["Andrea Di Franco <difranco.developer@gmail.com"]
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+ironcore-search-helpers = "0.1"
+js-sys = "0.3"
+serde = "1"
+serde_derive = "1"
+wasm-bindgen = { version = "0.2", features = [ "serde-serialize" ] }
+sha2 = "0.8"
+merlin = "1.2.0"
+serde-wasm-bindgen = "0.4"
+serde-json-wasm = "0.5.1"
+serde_json = "1.0.59"
+serde_with = "2.3.2"
+bincode = "1.3.3"
+base64 = "0.13.0"
+console_error_panic_hook = "0.1.7"
+hex = "0.4"

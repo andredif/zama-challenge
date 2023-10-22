@@ -1,0 +1,19 @@
+{
+  "name": "rust_merkle",
+  "collaborators": [
+    "Andrea Di Franco <difranco.developer@gmail.com"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "rust_merkle_bg.wasm",
+    "rust_merkle.js",
+    "rust_merkle_bg.js",
+    "rust_merkle.d.ts"
+  ],
+  "module": "rust_merkle.js",
+  "types": "rust_merkle.d.ts",
+  "sideEffects": [
+    "./rust_merkle.js",
+    "./snippets/*"
+  ]
+}

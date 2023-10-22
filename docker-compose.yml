@@ -1,0 +1,52 @@
+version: "3"
+
+services:
+  app:
+    image: difranco.developer@gmail.com/zama_challenge:latest
+    build:
+      dockerfile: ./Dockerfile
+      context: ./zama_challenge
+    volumes:
+      - ./zama_challenge/src:/src
+      - ./zama_challenge/docker-entrypoint.sh:/docker-entrypoint.sh
+    environment:
+      - PORT=8000
+      - HOST=0.0.0.0
+    env_file:
+      - ./envs/zama-challenge/.env
+    command: ["-start-service"]
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+      - "5780:5681"
+    networks:
+      - app-network
+  db:
+    image: postgres:14
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+    env_file:
+      - ./envs/postgres/.env
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+  webapp:
+    build:
+      context: .
+      dockerfile: ./challenge-frontend/Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./challenge-frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - app-network
+networks:
+  app-network:
+    name: docker-compose_zama
+    external: true

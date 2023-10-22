@@ -1,0 +1,12 @@
+.vscode
+virtual
+.eggs
+.cfg
+target
+*.pyc
+__pycache__
+*.egg-info
+.tox
+.coverage*
+*.log
+node_modules
